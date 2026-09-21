@@ -1,0 +1,44 @@
+[submodule "reference/AdaIR"]
+	path = reference/AdaIR
+	url = https://github.com/Lukas-VI/AdaIR.git
+[submodule "reference/AwesomeDehazing"]
+	path = reference/AwesomeDehazing
+	url = https://github.com/Lukas-VI/AwesomeDehazing.git
+[submodule "reference/ConvIR"]
+	path = reference/ConvIR
+	url = https://github.com/Lukas-VI/ConvIR.git
+[submodule "reference/DI-retinex-low-light-enhancement"]
+	path = reference/DI-retinex-low-light-enhancement
+	url = https://github.com/Lukas-VI/DI-retinex-low-light-enhancement.git
+	branch = master
+[submodule "reference/Enhanced-Spatio-Temporal-Interaction-Learning-for-Video-Deraining"]
+	path = reference/Enhanced-Spatio-Temporal-Interaction-Learning-for-Video-Deraining
+	url = https://github.com/Lukas-VI/Enhanced-Spatio-Temporal-Interaction-Learning-for-Video-Deraining.git
+	branch = master
+[submodule "reference/FocalNet"]
+	path = reference/FocalNet
+	url = https://github.com/Lukas-VI/FocalNet.git
+[submodule "reference/FSNet"]
+	path = reference/FSNet
+	url = https://github.com/Lukas-VI/FSNet.git
+[submodule "reference/IRNeXt"]
+	path = reference/IRNeXt
+	url = https://github.com/Lukas-VI/IRNeXt.git
+[submodule "reference/MC-Blur-Dataset"]
+	path = reference/MC-Blur-Dataset
+	url = https://github.com/Lukas-VI/MC-Blur-Dataset.git
+[submodule "reference/NDMamba"]
+	path = reference/NDMamba
+	url = https://github.com/Lukas-VI/NDMamba.git
+[submodule "reference/OKNet"]
+	path = reference/OKNet
+	url = https://github.com/Lukas-VI/OKNet.git
+[submodule "reference/PoolNet"]
+	path = reference/PoolNet
+	url = https://github.com/Lukas-VI/PoolNet.git
+[submodule "reference/SFNet"]
+	path = reference/SFNet
+	url = https://github.com/Lukas-VI/SFNet.git
+[submodule "reference/VIVNet"]
+	path = reference/VIVNet
+	url = https://github.com/Lukas-VI/VIVNet.git
