@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>任文琦教授 · 导师研究方向解析与技术学习指南</title>
+<style>
+  :root{
+    --bg:#0e1220;
+    --bg2:#141a2e;
+    --card:#1a2238;
+    --card2:#212b47;
+    --line:#2c3857;
+    --ink:#e8edf7;
+    --muted:#9aa7c4;
+    --accent:#4f8cff;
+    --accent2:#6fe3c1;
+    --violet:#9b7bff;
+    --amber:#ffb454;
+    --pink:#ff6b9d;
+    --green:#57d9a3;
+    --code-bg:#0b0f1b;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    line-height:1.75;font-size:15.5px;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ::selection{background:rgba(79,140,255,.35)}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;overflow:hidden;padding:72px 40px 56px;
+    background:
+      radial-gradient(1200px 500px at 85% -10%,rgba(79,140,255,.25),transparent 60%),
+      radial-gradient(900px 420px at 10% 110%,rgba(155,123,255,.22),transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    border-bottom:1px solid var(--line);
+  }
+  .hero .t{font-size:42px;font-weight:800;letter-spacing:.5px;margin:0 0 10px}
+  .hero .t .hl{color:var(--accent)}
+  .hero .sub{color:var(--muted);max-width:900px;font-size:17px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .chip{
+    padding:6px 14px;border-radius:999px;font-size:13px;
+    border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);
+  }
+  .chip b{color:var(--accent2);font-weight:600}
+
+  /* ===== Layout ===== */
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px 90px}
+  .grid{display:grid;gap:26px}
+
+  section{scroll-margin-top:20px}
+  .sec-head{display:flex;align-items:center;gap:14px;margin:56px 0 18px}
+  .sec-num{
+    width:40px;height:40px;flex:none;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--violet));
+    color:#fff;font-weight:800;font-size:17px;border-radius:12px;
+  }
+  .sec-head h2{margin:0;font-size:26px;font-weight:750}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 26px;margin-bottom:18px;
+  }
+  .card h3{margin:0 0 12px;font-size:19px;color:#fff}
+
+  .tag{display:inline-block;padding:2px 10px;border-radius:6px;font-size:12px;font-weight:600;margin-right:6px}
+  .t-a{background:rgba(79,140,255,.14);color:#8fb4ff;border:1px solid rgba(79,140,255,.35)}
+  .t-b{background:rgba(155,123,255,.14);color:#c3b0ff;border:1px solid rgba(155,123,255,.35)}
+  .t-c{background:rgba(111,227,193,.12);color:#8fe6cd;border:1px solid rgba(111,227,193,.3)}
+  .t-t{background:rgba(255,180,84,.13);color:#ffcf8a;border:1px solid rgba(255,180,84,.35)}
+  .t-p{background:rgba(255,107,157,.13);color:#ff9cc0;border:1px solid rgba(255,107,157,.35)}
+
+  /* ===== Tables ===== */
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--accent2);font-weight:650;background:rgba(255,255,255,.03)}
+  tr:hover td{background:rgba(255,255,255,.025)}
+  .mono,.code,.md{font-family:Consolas,"JetBrains Mono",ui-monospace,monospace;font-size:13px}
+  .md{color:var(--accent);word-break:break-all}
+
+  /* ===== Code block ===== */
+  .code{
+    background:var(--code-bg);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;overflow-x:auto;margin:12px 0;line-height:1.6;font-size:13px;color:#d6e2ff;
+  }
+  .code .cm{color:#5c6b8a}
+  .code .kw{color:#c792ea}
+  .code .fn{color:#82aaff}
+  .code .st{color:#c3e88d}
+  .code .nu{color:#f78c6c}
+  .code .id{color:#ffcb6b}
+  .code-title{font-size:12.5px;color:var(--muted);margin:16px 0 0;display:flex;gap:8px;align-items:center}
+  .code-title::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent);display:inline-block}
+
+  /* ===== Lists ===== */
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:5px 0}
+  .tick{list-style:none;padding-left:0}
+  .tick li{padding-left:28px;position:relative}
+  .tick li::before{content:"✔";position:absolute;left:2px;color:var(--green);font-weight:700}
+  .dot{list-style:none;padding-left:0}
+  .dot li{padding-left:26px;position:relative}
+  .dot li::before{content:"▸";position:absolute;left:2px;color:var(--accent)}
+
+  /* ===== Callout ===== */
+  .callout{
+    border-left:4px solid var(--accent);background:rgba(79,140,255,.08);
+    border-radius:0 12px 12px 0;padding:14px 18px;margin:16px 0;
+  }
+  .callout.warn{border-color:var(--amber);background:rgba(255,180,84,.08)}
+  .callout.good{border-color:var(--green);background:rgba(87,217,163,.08)}
+  .callout .ct{font-weight:700;margin-bottom:4px;display:block}
+
+  /* ===== Pillar boxes ===== */
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .pillar{
+    background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+  }
+  .pillar .ic{font-size:22px}
+  .pillar h4{margin:8px 0 6px;font-size:16px}
+  .pillar p{margin:0;color:var(--muted);font-size:14px}
+
+  .badge{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--violet));color:#fff;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700}
+  .enum{display:grid;gap:14px;margin-top:6px}
+  .enum .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+  .enum .item.b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px;background:var(--green)}
+  .enum .item.i::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px;background:var(--amber)}
+  .enum .item.f::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px;background:var(--pink)}
+  .enum .item b.k{color:var(--muted);font-weight:600;font-size:13px}
+
+  /* ===== Timeline ===== */
+  .tl{position:relative;margin:16px 0 8px;padding-left:28px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl .node{position:relative;margin-bottom:20px}
+  .tl .node::before{
+    content:"";position:absolute;left:-28px;top:7px;width:12px;height:12px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 0 4px rgba(79,140,255,.2);
+  }
+  .tl .node h5{margin:0 0 4px;font-size:16px}
+  .tl .node .r{font-size:12.5px;color:var(--muted)}
+
+  /* ===== Footer ===== */
+  .foot{
+    border-top:1px solid var(--line);margin-top:70px;padding-top:22px;
+    color:var(--muted);font-size:13px;text-align:center;
+  }
+  .srcs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;font-size:13px;color:var(--muted)}
+  .srcs a{color:var(--accent2)}
+
+  @media(max-width:680px){
+    .hero{padding:46px 20px 40px}.hero .t{font-size:30px}
+    .wrap{padding:0 16px 60px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <h1 class="t">任文琦教授 · 新成员 <span class="hl">研究融入指南</span></h1>
+  <p class="sub">中山大学网络空间安全学院 · 教授、博士生导师，国家优青，计算机视觉与多媒体内容安全知名学者（Google 学术引用 16000+，7 篇 ESI 高被引）。本指南围绕「<b>去学到『要做什么』</b>」与「<b>怎么学才能真正干活</b>」两大诉求，整合导师成果、开源代码、知识分层与产出路线。</p>
+  <div class="chips">
+    <span class="chip">🏛️ 网络空间安全学院</span>
+    <span class="chip">🎯 计算机视觉 · 内容安全</span>
+    <span class="chip">🌀 图像/视频复原增强</span>
+    <span class="chip">🛡️ 深度伪造检测 · 可trusted AI</span>
+    <span class="chip">📮 renwq3@mail.sysu.edu.cn</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ================= 目录 ================= -->
+<div style="margin-top:34px;">
+<table>
+  <tr><th style="width:38px">#</th><th>目录</th><th>内容要点</th></tr>
+  <tr><td>①</td><td><a href="#s1">导师画像与研究版图</a></td><td>双主轴框架：复原增强 + 内容安全</td></tr>
+  <tr><td>②</td><td><a href="#s2">成果资产索引</a></td><td>代表性论文 + 全部开源仓库定位</td></tr>
+  <tr><td>③</td><td><a href="#s3">知识地图（基础→进阶→前沿）</a></td><td>按方向拆解的知识点清单</td></tr>
+  <tr><td>④</td><td><a href="#s4">代码实例与工程上手</a></td><td>退化模型、复原网络、指标、数据集、detection 骨架</td></tr>
+  <tr><td>⑤</td><td><a href="#s5">高效融入与产出路线</a></td><td>60 天 / 季度行动方案 + 组内生存法则</td></tr>
+</table>
+</div>
+
+<!-- ================= ① 导师画像 ================= -->
+<section id="s1">
+  <div class="sec-head"><div class="sec-num">1</div><h2>导师画像与研究版图</h2></div>
+
+  <div class="card">
+    <h3>一句话定位</h3>
+    <p style="margin:0">任文琦教授深耕「<b style="color:var(--accent2)">低质量视觉数据 → 高质量输出</b>」这一核心命题，并以「多媒体内容安全」为落地场景：既要<b>把模糊/雾霾/暗光/低分的图像看清晰</b>，又要<b>识别人工智能伪造、篡改的图像与视频</b>。两条主线共享同一套视觉基础能力（CNN/Transformer/Mamba、退化建模、频域/注意力），因此形成高内聚的科研生态。</p>
+  </div>
+
+  <div class="pillars" style="margin-top:16px">
+    <div class="pillar"><div class="ic">🌀</div><h4>主线 A · 图像/视频复原与增强</h4><p>去模糊 · 去雾 · 去雨 · 去噪 · 低照度增强 · 超分辨率 · 人脸恢复</p></div>
+    <div class="pillar"><div class="ic">🛡️</div><h4>主线 B · 网络空间内容安全</h4><p>深度伪造检测 · 数字水印 · 图像篡改检测 · 大模型安全</p></div>
+    <div class="pillar"><div class="ic">🧠</div><h4>底座 · 视觉与学习基础</h4><p>CNN/Transformer/Mamba · 注意力 · 频域 · 表征解耦 · 可信AI</p></div>
+    <div class="pillar"><div class="ic">🚁</div><h4>延伸 · 具身与感知</h4><p>目标检测识别 · 人群计数 · 光流估计 · 具身智能安全</p></div>
+  </div>
+
+  <div class="callout">
+    <span class="ct">⚠️ 入组第一课：读人，再读论文</span>
+    导师团队常年招收硕士 2–3 名/年、博士 1–2 名/年。研究方向高度贴合中大网络空间安全学院（国家级网络威胁预警与防控平台）的使命。理解课题组「<b>回到真实退化、回到底层安全</b>」的取向，比背十篇论文更重要——几乎所有方法都强调<b>真实世界退化估计</b>与<b>鲁棒性</b>。
+  </div>
+
+  <div class="card">
+    <h3>荣誉与同行地位（判断课题组水准的信号）</h3>
+    <ul class="dot">
+      <li>国家自然科学基金<b>优秀青年基金</b>；广东省重大人才工程青年拔尖人才、吴文俊人工智能优秀青年奖</li>
+      <li>2022/2023/2025 爱思唯尔<b>中国高被引学者</b>；全球前 2% 顶尖科学家</li>
+      <li>华为「难题揭榜」火花奖、微软亚洲研究院「铸星计划」</li>
+      <li>CVPR / ECCV / ICML / NeurIPS / ICLR 2024–2026 连续担任 <b>Area Chair</b>；IEEE TIP 编委</li>
+      <li>中国电子学会自然科学一等奖（2/5）、中国图象图形学学会自然科学一等奖（3/5）</li>
+      <li>Google 学术引用 16000+，7 篇 ESI 高被引、2 篇热点论文</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ② 成果 ================= -->
+<section id="s2">
+  <div class="sec-head"><div class="sec-num">2</div><h2>成果资产索引</h2></div>
+
+  <div class="card">
+    <h3>代表性论文（按方向归档）</h3>
+    <table>
+      <thead><tr><th>方向</th><th>代表作</th><th>发表</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag t-c">去模糊</span></td><td>Deblurring Dynamic Scenes via Spatially Varying RNN（空间变化RNN）</td><td>TPAMI 2022</td></tr>
+        <tr><td><span class="tag t-c">去模糊</span></td><td>Fast UHD Video Deblurring via Multi-Scale Separable Network</td><td>IJCV 2024</td></tr>
+        <tr><td><span class="tag t-c">去模糊</span></td><td>Image Deblurring via Enhanced Low-Rank Prior</td><td>TIP 2016</td></tr>
+        <tr><td><span class="tag t-a">去雾</span></td><td>Single Image Dehazing via Multi-Scale CNN (MSCNN)</td><td>IJCV 2020 / ECCV 2016</td></tr>
+        <tr><td><span class="tag t-a">去雾</span></td><td>Gated Fusion Network for Single Image Dehazing</td><td>CVPR 2018</td></tr>
+        <tr><td><span class="tag t-a">去雾</span></td><td>Benchmarking Single-Image Dehazing and Beyond（综述基准）</td><td>TIP 2019</td></tr>
+        <tr><td><span class="tag t-b">低照度</span></td><td>Low-Light Image Enhancement via a Deep Hybrid Network</td><td>TIP 2019</td></tr>
+        <tr><td><span class="tag t-b">低照度</span></td><td>DI-Retinex: Digital-Imaging Retinex Model for Low-Light Enhancement</td><td>IJCV 2025</td></tr>
+        <tr><td><span class="tag t-b">去雨</span></td><td>Event-aware Video Deraining via Multi-Patch Progressive Learning</td><td>TIP 2023</td></tr>
+        <tr><td><span class="tag t-b">夜雨</span></td><td>NDMamba: Dual-Prior State-Space Model for Nighttime Deraining</td><td>TIP 2025</td></tr>
+        <tr><td><span class="tag t-t">通用复原</span></td><td>Image Restoration via Frequency Selection (FSNet)</td><td>TPAMI 2024</td></tr>
+        <tr><td><span class="tag t-t">通用复原</span></td><td>Revitalizing Convolutional Network for Image Restoration (ConvIR)</td><td>TPAMI 2024</td></tr>
+        <tr><td><span class="tag t-t">通用复原</span></td><td>Focal Network / PoolNet / VIVNet / AdaIR（通用统一复原体系）</td><td>ICCV~TPAMI 2023–26</td></tr>
+        <tr><td><span class="tag t-t">扩散复原</span></td><td>Dual-Prompting Image Restoration with Diffusion Transformers</td><td>CVPR 2025</td></tr>
+        <tr><td><span class="tag t-t">人脸恢复</span></td><td>Face Restoration via Plug-and-Play 3D Facial Priors</td><td>TPAMI 2022</td></tr>
+        <tr><td><span class="tag t-t">人脸恢复</span></td><td>3D Priors-Guided Diffusion for Blind Face Restoration</td><td>ACM MM 2024</td></tr>
+        <tr><td><span class="tag t-p">deepfake</span></td><td>Critical Forgetting-Based Multi-Scale Disentanglement for Deepfake Detection</td><td>AAAI 2025</td></tr>
+        <tr><td><span class="tag t-p">deepfake</span></td><td>Decision-Driven Orthogonal Learning ... Robust Synthetic Image Detection</td><td>AAAI 2025</td></tr>
+        <tr><td><span class="tag t-p">篡改检测</span></td><td>Recolored Image Detection via a Deep Discriminative Model</td><td>TIFS 2019</td></tr>
+      </tbody>
+    </table>
+    <div class="callout good" style="margin-top:14px">
+      <span class="ct">✅ 读懂规律</span>
+      复原方向呈清晰演进：<b>经典物理先验（暗通道/Retinex/低秩）→ 深度 CNN（残差/多尺度）→ Transformer/注意力 → 频域/通用统一复原 → Mamba → 扩散模型</b>。你学的知识脉络与导师论文时间线几乎一一对应。
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>公开 GitHub 仓库（入门复现优先序）</h3>
+    <table>
+      <thead><tr><th>优先级</th><th>仓库</th><th>做什么</th><th>技术栈</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge">入门</span></td><td class="mono">c-yn/FSNet</td><td>频域选择的统一图像复原</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">入门</span></td><td class="mono">c-yn/PoolNet</td><td>池化做低/高频隐式表示，通用复原</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">进阶</span></td><td class="mono">c-yn/FocalNet</td><td>U-Net + 聚焦调制复原（多任务）</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">进阶</span></td><td class="mono">c-yn/ConvIR</td><td>复兴 CNN 的通用复原框架</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">进阶</span></td><td class="mono">c-yn/VIVNet</td><td>视觉可视化统一高效复原基线</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">进阶</span></td><td class="mono">c-yn/OKNet</td><td>Omni-Kernel（条形+方形）通用复原</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">进阶</span></td><td class="mono">c-yn/AdaIR · SFNet · IRNeXt</td><td>自适应全一复原 / 频率网络 / 卷积设计</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">增强</span></td><td class="mono">sunshangquan/Di-Retinex</td><td>低照度增强（Retinex）</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">增强</span></td><td class="mono">tandaily/NDMamba</td><td>夜雨去雨（Mamba/状态空间）</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">增强</span></td><td class="mono">HDCVLab/ESTINet</td><td>视频去雨（CNN+ConvLSTM）</td><td>PyTorch</td></tr>
+        <tr><td><span class="badge">数据</span></td><td class="mono">HDCVLab/MC-Blur-Dataset</td><td>多原因去模糊 benchmark</td><td>数据集</td></tr>
+        <tr><td><span class="badge">数据</span></td><td class="mono">Xiaofeng-life/AwesomeDehazing</td><td>去雾方向资源汇总</td><td>文档</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <span class="ct">📍 提示</span>
+      FSNet 环境清晰（PyTorch 1.8.1）最适合最先跑通；<b>建议前两周内至少完整复现 FSNet 或 PoolNet 其中一条测试/训练流水线</b>，这能最快建立「我碰得到真实科研代码」的自信与基础。
+    </div>
+  </div>
+</section>
+
+<!-- ================= ③ 知识地图 ================= -->
+<section id="s3">
+  <div class="sec-head"><div class="sec-num">3</div><h2>知识地图：基础 → 进阶 → 前沿</h2></div>
+
+  <!-- A. 复原增强 -->
+  <div class="card">
+    <h3>方向 A · 图像/视频复原与增强</h3>
+    <div class="enum">
+      <div class="item b"><b class="k">🟢 基础层（本科~研一）</b>
+        <ul class="tick">
+          <li><b>退化建模</b>：大气散射模型（去雾）、模糊卷积核/运动核（去模糊）、加性高斯噪声与泊松分布（去噪）、Retinex 光照-反射分解（低照度）</li>
+          <li><b>经典先验</b>：暗通道先验、低秩先验、稀疏表示、全变差(TV)、BM3D 等传统正则化 →
+            对应 <i>Enhanced Low-Rank Prior (TIP'16)</i></li>
+          <li><b>CNN 基础</b>：卷积、池化、残差学习（残差连接与 ResNet）、多尺度特征、
+            转置卷积/上采样、patch 提取</li>
+          <li><b>经典深度复原</b>：SRCNN、DnCNN、MSCNN（去雾）、LLNet（低照度）、NAFNet 骨架</li>
+        </ul>
+      </div>
+      <div class="item i"><b class="k">🟡 进阶层</b>
+        <ul class="tick">
+          <li><b>注意力机制</b>：自注意力/通道注意力/空间注意力/窗口注意力 → 对 <i>FocalNet / VIVNet</i></li>
+          <li><b>频域视角</b>：小波/DCT/低频与高频分解、频域选择调制 → <i>FSNet / SFNet（TPAMI'24）</i></li>
+          <li><b>Transformer 复原</b>：Restormer、SwinIR、NAFNet 的 token 化与全局建模</li>
+          <li><b>多尺度与融合</b>：多尺度可分离模块（UHD 视频去模糊）、Gated Fusion、跨尺度融合</li>
+          <li><b>损失函数</b>：L1/L2、感知损失(Perceptual)、对抗损失、SSIM 损失、Charbonnier 损失</li>
+          <li><b>评估</b>：PSNR、SSIM、LPIPS、NIQE（无参考）；常用数据集 NYU-Depth(合成去雾)、GoPro(去模糊)、SIDD(去噪)、LOL(低照度)、DIV2K(超分)</li>
+        </ul>
+      </div>
+      <div class="item f"><b class="k">🔴 前沿层</b>
+        <ul class="tick">
+          <li><b>统一/通用复原</b>：一个骨架处理去噪+去雾+去模糊+超分 → ConvIR、PoolNet、AdaIR、FocalNet</li>
+          <li><b>Mamba/状态空间模型</b>：线性复杂度长程建模 → NDMamba、MatIR、FMambaIR</li>
+          <li><b>扩散模型复原</b>：以 Diffusion Transformer 完成盲恢复、内容先验注入 → <i>Dual-Prompting (CVPR'25)</i></li>
+          <li><b>盲复原与退化估计</b>：同时估计退化核 + 复原内容；重度退化不匹配时如何自适应</li>
+          <li><b>深度展开 / 先验指导</b>：把迭代优化展开成网络（ISR）、3D 人脸先验指导人脸恢复</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. 内容安全 -->
+  <div class="card">
+    <h3>方向 B · 网络空间内容安全</h3>
+    <div class="enum">
+      <div class="item b"><b class="k">🟢 基础层</b>
+        <ul class="tick">
+          <li><b>信号与频域</b>：DFT/DCT、JPEG 压缩伪影、噪声统计，鉴别「图像经过处理」的痕迹</li>
+          <li><b>二分类与表征学习</b>：ReLU 分类头、交叉熵、欧氏空间的样本分布与过拟合</li>
+          <li><b>数据清洗</b>：FF++、Celeb-DF、DFDC 数据集构造与标签体系</li>
+          <li><b>通用视觉骨干</b>：CNN / ViT / CLIP 的视觉编码</li>
+        </ul>
+      </div>
+      <div class="item i"><b class="k">🟡 进阶层</b>
+        <ul class="tick">
+          <li><b>特征解耦 / Disentanglement</b>：把「内容」与「伪造痕迹」分离 → <i>Multi-Scale Disentanglement (AAAI'25)</i></li>
+          <li><b>鲁棒性与对抗</b>：JPEG 重压缩、分辨率缩放后的检测稳定性；频域+空间互补特征</li>
+          <li><b>决策驱动 / 正则约束</b>：正交约束使压缩扰动不影响决策 → <i>Decision-Driven Orthogonal Learning (AAAI'25)</i></li>
+          <li><b>身份级 / 时序检测</b>：视频帧间不一致、眨眼/心跳等生理信号线索</li>
+        </ul>
+      </div>
+      <div class="item f"><b class="k">🔴 前沿层</b>
+        <ul class="tick">
+          <li><b>AIGC 内容检测</b>：检测扩散模型 / GPT-4o 等生成图与视频（DIRE、DiffusionRecon、OpenFake）</li>
+          <li><b>多模态 LLM 检测</b>：利用 VLM 语义推理鉴别伪造；多模态线索融合</li>
+          <li><b>大模型安全 / 可信 AI</b>：越狱提示、中毒攻击、模型鲁棒性与对齐</li>
+          <li><b>联合建模</b>：鲁棒水印 + 篡改定位（如 OmniGuard、GenPTW 思路）；被动与主动检测结合</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="ct">💡 两条主线的最大交集 = 你的杠杆</span>
+    「对退化与伪影的敏感」同时训练了复原（去伪影）与检测（辨伪影）两套能力。建议把<b>频域分析、注意力机制、表征解耦</b>三块作为必修硬核，它们是连接两方向的知识桥梁。
+  </div>
+</section>
+
+<!-- ================= ④ 代码实例 ================= -->
+<section id="s4">
+  <div class="sec-head"><div class="sec-num">4</div><h2>代码实例与工程上手</h2></div>
+
+  <div class="card">
+    <h3>4.1 退化模型：科研的「造数据」起点</h3>
+    <p style="color:var(--muted)">复原任务要先把干净图人为退化，才能有监督地训练。以下是最常用的几种退化合成（PyTorch）。</p>
+    <div class="code-title">退化合成 · 去雾（大气散射模型）+ 去噪（加噪）+ 模糊（高斯核）</div>
+    <div class="code"><span class="cm"># 大气散射模型: I(x) = J(x)·t(x) + A·(1 - t(x))   t 为透射率, A 为大气光</span>
+<span class="kw">import</span> torch, torch.nn.<span class="kw">as</span> nn, torch.nn.functional <span class="kw">as</span> F
+
+<span class="kw">def</span> <span class="fn">add_haze</span>(clean, depth_map, A=<span class="nu">0.7</span>, beta=<span class="nu">1.0</span>):
+    <span class="cm"># t = exp(-beta * depth)，depth 来自深度图(如 NYU-Depth)</span>
+    t = torch.exp(-beta * depth_map).clamp(<span class="nu">0.05</span>, <span class="nu">1.0</span>)
+    hazy = clean * t.unsqueeze(<span class="nu">1</span>) + A * (<span class="nu">1</span> - t).unsqueeze(<span class="nu">1</span>)
+    <span class="kw">return</span> hazy
+
+<span class="kw">def</span> <span class="fn">add_noise</span>(img, sigma=<span class="nu">25</span>/<span class="nu">255.0</span>):
+    <span class="kw">return</span> img + torch.randn_like(img) * sigma   <span class="cm"># 高斯噪声</span>
+
+<span class="kw">def</span> <span class="fn">add_blur</span>(img, kernel_size=<span class="nu">11</span>, sigma=<span class="nu">2.0</span>):
+    grid = torch.arange(kernel_size, dtype=torch.<span class="kw">float</span>32) - kernel_size//<span class="nu">2</span>
+    x, y = torch.meshgrid(grid, grid, indexing=<span class="st">'ij'</span>)
+    ker = torch.exp(-(x**<span class="nu">2</span>+y**<span class="nu">2</span>)/(<span class="nu">2</span>*sigma**<span class="nu">2</span>)); ker /= ker.sum()
+    ker = ker.view(<span class="nu">1</span>,<span class="nu">1</span>,kernel_size,kernel_size).repeat(<span class="nu">3</span>,<span class="nu">1</span>,<span class="nu">1</span>,<span class="nu">1</span>)
+    <span class="kw">return</span> F.conv2d(img, ker, padding=kernel_size//<span class="nu">2</span>, groups=<span class="nu">3</span>)</div>
+
+    <div class="callout good"><span class="ct">✅ 为什么重要</span>导师许多论文难点在「真实退化」：过于理想化的合成退化会让模型在真实照片失效。理解退化模型 = 理解任务本质，也方便复现《Benchmarking Dehazing》等基准。</div>
+  </div>
+
+  <div class="card">
+    <h3>4.2 最小可用复原网络：Residual 学习的 UNet 版「Mini ConvIR」</h3>
+    <div class="code-title">一个可训练、可扩展的复原主干（残差 + 编码解码）</div>
+    <div class="code"><span class="kw">import</span> torch.nn.<span class="kw">as</span> nn
+
+<span class="kw">class</span> <span class="id">DoubleConv</span>(nn.<span class="kw">Module</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, cin, cout):
+        <span class="kw">super</span>().<span class="fn">__init__</span>()
+        self.net = nn.<span class="kw">Sequential</span>(
+            nn.Conv2d(cin, cout, <span class="nu">3</span>, padding=<span class="nu">1</span>), nn.ReLU(inplace=<span class="kw">True</span>),
+            nn.Conv2d(cout, cout, <span class="nu">3</span>, padding=<span class="nu">1</span>), nn.ReLU(inplace=<span class="kw">True</span>))
+    <span class="kw">def</span> <span class="fn">forward</span>(self, x): <span class="kw">return</span> self.net(x)
+
+<span class="kw">class</span> <span class="id">MiniRestore</span>(nn.<span class="kw">Module</span>):
+    <span class="cm"># 输入退化图，残差学习预测"干净的残差增量" -> output = input + residual</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, cin=<span class="nu">3</span>, base=<span class="nu">32</span>):
+        <span class="kw">super</span>().<span class="fn">__init__</span>()
+        self.enc1 = DoubleConv(cin, base)
+        self.enc2 = DoubleConv(base, base*<span class="nu">2</span>)
+        self.enc3 = DoubleConv(base*<span class="nu">2</span>, base*<span class="nu">4</span>)
+        self.pool = nn.MaxPool2d(<span class="nu">2</span>)
+        self.dec3 = DoubleConv(base*<span class="nu">4</span>, base*<span class="nu">2</span>)
+        self.dec2 = DoubleConv(base*<span class="nu">2</span>, base)
+        self.dec1 = DoubleConv(base, cin)
+    <span class="kw">def</span> <span class="fn">forward</span>(self, x):
+        e1, e2 = self.enc1(x), self.enc2(self.pool(self.enc1(x)))
+        e3 = self.enc3(self.pool(self.enc2(self.pool(self.enc1(x)))))
+        <span class="cm"># 简化上采样跳过连接</span>
+        d = F.interpolate(self.dec3(e3), scale_factor=<span class="nu">2</span>) + e2
+        d = self.dec2(d); d = F.interpolate(d, scale_factor=<span class="nu">2</span>) + e1
+        residual = self.dec1(d)
+        <span class="kw">return</span> x + residual   <span class="cm"># 残差学习：直接学"改了哪里"</span></div>
+    <div class="callout"><span class="ct">🧪 复现考核</span>先分别用 add_haze / add_noise / add_blur 造数据训练此模型，比较三个任务的恢复效果差异——这能让你理解「不同退化需要不同归纳偏置」，也是读懂 FocalNet/ConvIR 改进点的基础。</div>
+  </div>
+
+  <div class="card">
+    <h3>4.3 训练与评估脚本（PSNR / SSIM）</h3>
+    <div class="code-title">PyTorch 最小训练循环 + 指标</div>
+    <div class="code"><span class="kw">import</span> torch, torch.nn.<span class="kw">as</span> nn
+model = MiniRestore(); opt = torch.optim.Adam(model.parameters(), lr=<span class="nu">1e-3</span>)
+criterion = nn.<span class="kw">SmoothL1Loss</span>()   <span class="cm"># Charbonnier 简化版，复原任务常用</span>
+
+<span class="kw">for</span> epoch <span class="kw">in</span> <span class="fn">range</span>(<span class="nu">30</span>):
+    <span class="kw">for</span> clean <span class="kw">in</span> train_loader:
+        hazy = add_haze(clean, depth_map)          <span class="cm"># 在线合成</span>
+        pred = model(hazy)
+        loss = criterion(pred, clean)
+        opt.zero_grad(); loss.backward(); opt.step()
+
+<span class="kw">def</span> <span class="fn">psnr</span>(pred, gt, maxv=<span class="nu">1.0</span>):
+    mse = ((pred - gt) ** <span class="nu">2</span>).mean()
+    <span class="kw">return</span> <span class="nu">10</span> * torch.log10(maxv ** <span class="nu">2</span> / (mse + <span class="nu">1e-8</span>))
+
+<span class="kw">def</span> <span class="fn">ssim</span>(pred, gt):                       <span class="cm"># 常用: pytorch_msssim 包</span>
+    <span class="kw">from</span> pytorch_msssim <span class="kw">import</span> ssim
+    <span class="kw">return</span> ssim(pred, gt, data_range=<span class="nu">1.0</span>)</div>
+    <div class="callout warn"><span class="ct">⚠️ 常见坑</span>PSNR 需在归一化一致（0–1 或 0–255）下比较；SSIM 与 LPIPS 更高层次语义更贴近人眼，论文一般同时上报三者。跑复现时先锁随机种子与数据划分，保证对比公平。</div>
+  </div>
+
+  <div class="card">
+    <h3>4.4 deepfake 检测骨架：解耦「内容 vs 伪造痕迹」的思路</h3>
+    <div class="code-title">表征解耦的最小示意（对应 AAAI'25 Multi-Scale Disentanglement 思想）</div>
+    <div class="code"><span class="kw">class</span> <span class="id">DisentangleDetector</span>(nn.<span class="kw">Module</span>):
+        <span class="kw">def</span> <span class="fn">__init__</span>(self, backbone):
+            <span class="kw">super</span>().<span class="fn">__init__</span>()
+            self.backbone = backbone                       <span class="cm"># CNN/ViT 特征提取</span>
+            self.content_head = nn.Linear(<span class="nu">512</span>, <span class="nu">128</span>)   <span class="cm"># 语义内容分支</span>
+            self.forgery_head  = nn.Linear(<span class="nu">512</span>, <span class="nu">128</span>)   <span class="cm"># 伪造痕迹分支</span>
+            self.cls = nn.Linear(<span class="nu">128</span>, <span class="nu">2</span>)               <span class="cm"># 真/假分类</span>
+
+        <span class="kw">def</span> <span class="fn">forward</span>(self, x):
+            f = self.backbone(x)          <span class="cm"># [B,512]</span>
+            zc = self.content_head(f)     <span class="cm"># 内容表征</span>
+            zf = self.forgery_head(f)     <span class="cm"># 伪造表征（核心判别线索）</span>
+            <span class="cm"># 关键遗忘 / 解耦: 让 zc 不携带伪造信息，只用 zf 做判别</span>
+            <span class="kw">return</span> self.cls(zf)
+
+<span class="cm"># 训练时的解耦正则（示意）：正交损失迫使两分支不相关</span>
+<span class="kw">def</span> <span class="fn">orthogonality</span>(zc, zf):
+    zc = F.normalize(zc, dim=-<span class="nu">1</span>); zf = F.normalize(zf, dim=-<span class="nu">1</span>)
+    <span class="kw">return</span> (zc * zf).sum(dim=-<span class="nu">1</span>).abs().mean()</div>
+  </div>
+
+  <div class="card">
+    <h3>4.5 高频加分项：频域特征（两方向通用利器）</h3>
+    <div class="code-title">用 DCT / 小波提取低频与高频，辅助复原与检测</div>
+    <div class="code"><span class="kw">import</span> torch, torch.fft
+<span class="cm"># 将图像拆为低频(L)与高频(H) → 复原保留结构、检测关注伪影</span>
+freq = torch.fft.rfft2(img)
+low  = torch.fft.irfft2(freq * mask_low)    <span class="cm"># mask_low 中心低频部分</span>
+high = img - low                            <span class="cm"># 高频 = 细节/噪声/伪造痕迹</span>
+<span class="cm"># 导师 FSNet 的核心思路即"频域选择调制"：对不同频段赋予不同权重</span></div>
+  </div>
+
+  <div class="card">
+    <h3>4.6 本地环境建议</h3>
+    <ul class="dot">
+      <li><b>框架</b>：PyTorch ≥ 1.9（导师多数仓库基于 PyTorch；Mamba 仓库需额外装 selective_scan / SSM 依赖）</li>
+      <li><b>数据</b>：先下载小规模子集（GoPro 去模糊、NYU 深度去雾、LOL 低照度）练手，避免一上来拖整库</li>
+      <li><b>追踪</b>：用 WandB / TensorBoard 记录 loss 与 PSNR 曲线，养成实验记录习惯</li>
+      <li><b>Diffusion/Mamba</b>：涉及大模型时优先用 3090/4090 级别单卡或云端按需算力，先跑通推理</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= ⑤ 融入与产出 ================= -->
+<section id="s5">
+  <div class="sec-head"><div class="sec-num">5</div><h2>高效融入与尽快产出路线</h2></div>
+
+  <div class="tl">
+    <div class="node"><h5>第 1 个月 · 站稳脚跟（打基础 + 建信任）</h5>
+      <div class="r">目标：让导师相信你「能独立跑通代码、能读懂论文」</div>
+      <ul class="dot">
+        <li>通读导师近 2 年 TPAMI/TIP/CVPR 论文 4–6 篇，重点 <b>FSNet、ConvIR、DI-Retinex、一篇 deepfake</b></li>
+        <li>完整复现 <b>FSNet 或 PoolNet</b>：跑通训练、测试、指标评估，整理成可复用的实验脚本</li>
+        <li>搭建个人实验环境 + 笔记库（zna笔记：论文一页纸范式：问题/方法/实验/可改进点）</li>
+        <li>每周向导师或组长同步 1 次进展，主动汇报卡点而非求助前不吭声</li>
+      </ul>
+    </div>
+    <div class="node"><h5>第 2–3 个月 · 找到杠杆（选题定位）</h5>
+      <div class="r">目标：从一个具体小改进开始，做出「增量」结果</div>
+      <ul class="dot">
+        <li>从 <b>老方法 + 新组件</b> 入手：如给已有 backbone 换注意力 / 换频域调制 / 换成 Mamba 分支，跑基线对比</li>
+        <li>或从 <b>真实退化 / 新数据</b> 切入：构造一个更贴近真实的退化合成，验证对真实测试集的提升</li>
+        <li>内容安全侧：从 FF++/Celeb-DF 复现一个检测器，尝试加 JPEG 压缩鲁棒处理</li>
+        <li>产出初步实验曲线，向导师提出 <b>1–2 个可写的 idea</b>，主动申请匹配子课题</li>
+      </ul>
+    </div>
+    <div class="node"><h5>第 3–6 个月 · 冲刺产出</h5>
+      <div class="r">目标：把增量做成完整投稿（会议 A 稿 / 论文）</div>
+      <ul class="dot">
+        <li>补齐对比实验：多个数据集 × 多个指标 × 与 baseline 的显著差异验证</li>
+        <li>做好 <b>消融实验</b>（每个模块的贡献度），这是 reviewer 最看重的部分之一</li>
+        <li>开始撰写论文初稿，请师兄师姐先评；目标投稿 ICML/CVPR/AAAI 或 TIP/IJCV 相关 track</li>
+        <li>同时积累代码可复现性 —— 导师组很重视代码，保持仓库整洁</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>课题组「生存法则」核心建议</h3>
+    <ul class="tick">
+      <li><b>少问「怎么做」，多带着「我已尝试的方案 + 卡在哪里」提问</b>——导师是 TIP 编委兼多个 A 会 AC，时间宝贵</li>
+      <li><b>用数据说话</b>：讨论时带上一页实验表（模型×数据集×PSNR/SSIM），比口头描述有说服力百倍</li>
+      <li><b>盯住「真实退化」这个组内基因</b>：任何 idea 都回答「在真实照片/真实压缩下还成立吗」</li>
+      <li><b>建立复现库</b>：把 FSNet/PoolNet/FocalNet/ConvIR 等跑通后的笔记沉淀为团队的 mini-benchmark 资产</li>
+      <li><b>主动链接企业项目</b>：导师有华为/腾讯/深圳等 20+ 项目，上前端需求（如实际业务中的去雾/检测卡点）往往是最快撮合出题的土壤</li>
+      <li><b>保持代码资产整洁</b>：注释、随机种子、config 化 —— 课题组公开代码口碑好，是加分项也是内功</li>
+    </ul>
+  </div>
+
+  <div class="callout good">
+    <span class="ct">🎯 一句话行动纲领</span>
+    "第一个月跑通 <b>FSNet</b> 全流程、第三个月前拿出 <b>1 个新组件的基线提升</b>、第六个月给出 <b>一篇成型的期刊/会议稿</b>"。以此为锚，你会比"泛泛读论文"的同级更快融入并产出。
+  </div>
+</section>
+
+<!-- ================= 来源 ================= -->
+<section>
+  <div class="sec-head"><div class="sec-num">§</div><h2>主要信息来源</h2></div>
+  <div class="srcs">
+    本指南基于以下公开资料整理（供进一步溯源）：
+    <ul class="dot" style="margin-top:8px">
+      <li>导师主页（含论文与开源链接）：<a href="https://rwenqi.github.io/">https://rwenqi.github.io/</a></li>
+      <li>导师 CV：<a href="https://rwenqi.github.io/resources/Wenqi_Ren_CV.pdf">Wenqi_Ren_CV.pdf</a></li>
+      <li>中大网络空间安全学院教师页：<a href="https://scst.sysu.edu.cn/teacher/RenWenqi">scst.sysu.edu.cn/teacher/RenWenqi</a></li>
+      <li>Google Scholar：<a href="https://scholar.google.com/citations?user=VwfgfR8AAAAJ">Wenqi Ren</a></li>
+      <li>开源仓库（部分）：<a href="https://github.com/c-yn/FocalNet">FocalNet</a> · <a href="https://github.com/c-yn/VIVNet">VIVNet</a> · <a href="https://github.com/c-yn/ConvIR">ConvIR</a> · <a href="https://github.com/c-yn/FSNet">FSNet</a> · <a href="https://github.com/c-yn/PoolNet">PoolNet</a> · <a href="https://github.com/sunshangquan/Di-Retinex">Di-Retinex</a> · <a href="https://github.com/tandaily/NDMamba">NDMamba</a> · <a href="https://github.com/HDCVLab/MC-Blur-Dataset">MC-Blur</a></li>
+    </ul>
+    <div style="margin-top:8px;font-size:12.5px">提示：以上论文/仓库 URL 来自公开学术主页与代码链接；个别仓库（如新增的 Mamba/扩散）需以 GitHub 最新状态为准。深入研究时请直接访问导师主页核对原文。</div>
+  </div>
+</section>
+
+<div class="foot">
+  任文琦教授课题组新成员研究融入指南 · 基于公开学术资料整理 · 生成于 2026-09
+</div>
+
+</div>
+</body>
+</html>
