@@ -42,3 +42,6 @@
 [submodule "reference/VIVNet"]
 	path = reference/VIVNet
 	url = https://github.com/Lukas-VI/VIVNet.git
+[submodule "Projects/OPA"]
+	path = Projects/OPA
+	url = https://github.com/Lukas-VI/OPA.git
