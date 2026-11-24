@@ -45,3 +45,4 @@
 [submodule "Projects/OPA"]
 	path = Projects/OPA
 	url = https://github.com/Lukas-VI/OPA.git
+	branch = research/mara-net-strict-protocol
